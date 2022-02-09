@@ -1,0 +1,74 @@
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+img {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 10px;
+  border: 1.5px solid brown;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+  /* transition: all 0.2s; */
+  background-color: antiquewhite;
+  margin: 1%;
+}
+
+:hover button {
+  cursor: pointer;
+}
+
+.valgt {
+  background-color: greenyellow;
+}
+
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+nav {
+  text-align: center;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: scroll;
+}
+
+#popup article {
+  width: 80vw;
+  display: flex;
+  margin: 4rem auto;
+  border-radius: 25px;
+  padding: 12px;
+  background-color: white;
+}
+#luk {
+  position: fixed;
+  padding: 20px;
+  font-size: 2rem;
+  font-weight: bolder;
+  color: white;
+  cursor: pointer;
+}
