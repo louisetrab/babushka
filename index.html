@@ -38,7 +38,7 @@
         <img src="" alt="" />
         <section>
           <h2></h2>
-          <h3 class="titel"></h3>
+          <!-- <h3 class="titel"></h3> -->
           <p class="langbeskrivelse"></p>
           <p class="oprindelsesregion"></p>
           <p class="prisen"></p>
@@ -104,16 +104,34 @@
           klon.querySelector("h2").textContent = ret.navn;
           klon.querySelector(".beskrivelse").textContent = ret.kortbeskrivelse;
           klon.querySelector(".pris").textContent = ret.pris + "kr";
+          klon
+            .querySelector("article")
+            .addEventListener("click", () => visDetaljer(ret));
           main.appendChild(klon);
         }
       });
     }
 
+    function visDetaljer(ret) {
+      popup.style.display = "block";
+      popup.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
+      popup.querySelector("h2").textContent = ret.navn;
+      popup.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
+      popup.querySelector(".oprindelsesregion").textContent =
+        "Oprindelsesregion: " + ret.oprindelsesregion;
+      popup.querySelector(".prisen").textContent = "Pris: " + ret.pris + "kr.";
+    }
+
+    document
+      .querySelector("#luk")
+      .addEventListener("click", () => (popup.style.display = "none"));
+
     // Lav en variabel, der refererer til ".toggle-btn"
     const btn = document.querySelector(".toggle-btn");
     // Lav en variabel, der refererer til "nav"
     const nav = document.querySelector("nav");
-
+    /* Tilføj et klik-event til btn, der sætter toggleMenu-funktionen i gang */
+    btn.addEventListener("click", toggleMenu);
     // Lav en function, der hedder toggleMenu()
     function toggleMenu() {
       // 1. Toggle en klasse på nav vha. classList.toggle
@@ -136,8 +154,5 @@
         console.log("menu");
       }
     }
-
-    /* Tilføj et klik-event til btn, der sætter toggleMenu-funktionen i gang */
-    btn.addEventListener("click", toggleMenu);
   </script>
 </html>
