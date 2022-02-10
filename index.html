@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amarante&family=Poiret+One&family=Zen+Kaku+Gothic+Antique&display=swap"
+      rel="stylesheet"
+    />
     <title>Bistro Babushka</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <h1>Menu</h1>
-
       <button class="toggle-btn">☰</button>
 
+      <h1>Menu</h1>
       <nav>
         <button data-kategori="alle" class="valgt">Alle</button>
         <button data-kategori="forretter">Forretter</button>
@@ -22,8 +25,9 @@
         <button data-kategori="drikkevarer">Drikkevarer</button>
       </nav>
     </header>
+
     <main></main>
-    <section id="section_one"></section>
+
     <template>
       <article>
         <img src="" alt="" class="billede" />
@@ -36,6 +40,7 @@
     <section id="popup">
       <div id="luk">X</div>
       <article>
+        <!-- <div id="luk_mini">X</div> -->
         <img src="" alt="" />
         <section>
           <h2></h2>
@@ -126,6 +131,10 @@
     document
       .querySelector("#luk")
       .addEventListener("click", () => (popup.style.display = "none"));
+
+    // document
+    //   .querySelector("#luk_mini")
+    //   .addEventListener("click", () => (popup.style.display = "none"));
 
     // Lav en variabel, der refererer til ".toggle-btn"
     const btn = document.querySelector(".toggle-btn");
