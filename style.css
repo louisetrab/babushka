@@ -18,24 +18,31 @@ nav {
 
 button {
   padding: 10px;
-  border: 1.5px solid brown;
   border-radius: 20px;
   text-decoration: none;
   font-family: sans-serif;
   font-weight: 300;
   color: #000000;
   text-align: center;
-  /* transition: all 0.2s; */
-  background-color: antiquewhite;
   margin: 1%;
+  background-color: #fff;
+  border-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+  border-image-slice: 1;
 }
 
-:hover button {
+#section_one {
+  background-image: url(img/edgar-castrejon-1CsaVdwfIew-unsplash.jpg);
+  background-size: cover;
+  width: 100%;
+}
+
+button:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .valgt {
-  background-color: greenyellow;
+  font-weight: bold;
 }
 
 h1 {
