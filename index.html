@@ -10,6 +10,9 @@
   <body>
     <header>
       <h1>Alle</h1>
+
+      <button class="toggle-btn">☰</button>
+
       <nav>
         <button data-kategori="alle" class="valgt">Alle</button>
         <button data-kategori="forretter">Forretter</button>
@@ -46,6 +49,7 @@
 
   <script>
     //Tillader adgang til databasen
+    const header = document.querySelector("header h1");
     const url = "https://babushka-dd8a.restdb.io/rest/menu";
     const myHeaders = {
       "x-apikey": "600ec2fb1346a1524ff12de4",
@@ -54,6 +58,8 @@
     document.addEventListener("DOMContentLoaded", start);
     let mad;
     let filter = "alle";
+
+    //Første funktion der kaldes efter DOM er loaded
     function start() {
       const filterKnapper = document.querySelectorAll("nav button");
       filterKnapper.forEach((knap) =>
@@ -61,12 +67,13 @@
       );
       loadJSON();
     }
+    //Eventlistener knyttet til knapperne der vælger hvad for et filter der er aktivt (fremhæver knappen)
     function filtrerMad() {
       filter = this.dataset.kategori;
       document.querySelector(".valgt").classList.remove("valgt");
       this.classList.add("valgt");
       visMad();
-      h1.textContent = this.textContent;
+      header.textContent = this.textContent;
     }
 
     //Henter og viser informationen fra databasen
@@ -75,18 +82,21 @@
         headers: myHeaders,
       });
       mad = await JSONData.json();
-      console.log("Kategori", mad);
+      console.log("kategori", mad);
       visMad();
     }
 
-    //Kloner informartionen jeg har specificeret (billeder, navn, beskrivelse og pris)
+    // Funktion der viser maden i liste view
     function visMad() {
       console.log("visMad");
 
       const main = document.querySelector("main"); //container til main sektionen indeholdene menuen
       const template = document.querySelector("template").content; // select indhold af html skabelon (article)
+      main.textContent = ""; //Ryd container inden ny loop
 
+      //Kloner informartionen specificeret (billeder, navn, beskrivelse og pris)
       mad.forEach((ret) => {
+        //loop igennem json (personer)
         if (filter == ret.kategori || filter == "alle") {
           const klon = template.cloneNode(true);
           klon.querySelector(".billede").src =
@@ -98,5 +108,36 @@
         }
       });
     }
+
+    // Lav en variabel, der refererer til ".toggle-btn"
+    const btn = document.querySelector(".toggle-btn");
+    // Lav en variabel, der refererer til "nav"
+    const nav = document.querySelector("nav");
+
+    // Lav en function, der hedder toggleMenu()
+    function toggleMenu() {
+      // 1. Toggle en klasse på nav vha. classList.toggle
+      // 2. Toggle en klasse, der hedder "shown"
+      nav.classList.toggle("shown");
+
+      // 1. Lav en variabel, der hedder menuShown
+      // 2. Den skal være lig med, om nav-variablen indeholder klassen "shown" vha. classList.contains("")
+      const menuShown = nav.classList.contains("shown");
+
+      // 1. Lav en if/else sætning => if (...) {...} else {...}
+      // 2. Spørg om menu i if-sætningen => if (menu)
+      if (menuShown) {
+        // hvis nav har klassen "shown", sæt da btn.textContent til "Luk"
+        console.log("luk");
+        btn.textContent = "X";
+      } else {
+        // hvis IKKE nav har klassen "shown", sæt da btn.textContent til "Menu"
+        btn.textContent = "☰";
+        console.log("menu");
+      }
+    }
+
+    /* Tilføj et klik-event til btn, der sætter toggleMenu-funktionen i gang */
+    btn.addEventListener("click", toggleMenu);
   </script>
 </html>

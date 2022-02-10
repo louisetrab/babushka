@@ -72,3 +72,36 @@ nav {
   color: white;
   cursor: pointer;
 }
+
+/*---------- Burger menu ----------*/
+
+@media (max-width: 600px) {
+  .toggle-btn {
+    background: transparent;
+    color: black;
+    border: none;
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 0.25rem;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.shown {
+    border-top: 1px solid #000;
+    padding-top: 1rem;
+    display: flex;
+    flex: 1 1 100%;
+    flex-flow: column;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  nav ul {
+    display: flex;
+    flex-flow: column;
+  }
+}
